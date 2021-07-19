@@ -16,16 +16,15 @@ weatherForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     console.log('search value ', search.value)
-    weatherData.textContent = 'loading';
 
     fetch(`http://localhost:3000/weather?address=${search.value}`).then( response => {
         response.json().then( ( { error, city, description} = {} ) => {
             if (!error) {
-                weatherData.textContent = `${city} is ${description}`;
-                weatherDataError.textContent = '';
+                console.log({description, city})
+                weatherData.textContent = 
             } else {
+                console.log({error})
                 weatherDataError.textContent = error;
-                weatherData.textContent = '';
             }
         });
     });
